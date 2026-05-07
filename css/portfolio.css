@@ -1,0 +1,381 @@
+*{
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+ 
+
+:root {
+
+    --primary-color: rgb(52, 12, 75);
+
+    --sencond-color: #44cbe3;
+
+    --text-color: #44cbe3;
+
+    --terttiary-color: #fff;
+
+ 
+
+    body.claro {
+
+    --primary-color: rgb(52, 12, 75);
+
+    --sencond-color: #44cbe3;
+
+    --text-color: #44cbe3;
+
+    --terttiary-color: #fff;
+
+       
+
+    }
+
+ 
+
+    body.escuro {
+
+    --primary-color: #340c4b;
+
+    --sencond-color: #44cbe3;
+
+    --text-color: #44cbe3;
+
+    --terttiary-color: #fff;
+
+    }
+
+   
+
+ 
+
+}
+
+ 
+
+body {
+
+    font-family: Arial,  sans-serif;
+
+    background-color: var(--primary-color);
+
+    color: var(--text-color);
+
+    line-height: 1.5;
+
+}
+
+ 
+
+.botao_tema{
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 20px;
+
+ 
+
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 25px;
+
+ 
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+ 
+
+header{
+
+    text-align: center;
+
+    background-color: var(--sencond-color);
+
+    padding: 20;
+
+ 
+
+}
+
+ 
+
+header h1 {
+
+    margin-bottom: 20px;
+
+}
+
+ 
+
+header img{
+
+    width: 200px;
+
+    height: 200px;
+
+    border-radius: 50%;
+
+    border: solid 3px var(--terttiary-color);
+
+    object-fit: fill;
+
+}
+
+ 
+
+nav {
+
+    background-color: var(--terttiary-color);
+
+}
+
+ 
+
+body nav h1 {
+
+    text-align: center;
+
+    background-color: var(--primary-color) ;
+
+ 
+
+}
+
+ 
+
+body nav img {
+
+    width: 200;
+
+    height: 200;
+
+    display: block;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    border: solid var(--sencond-color) ;
+
+    align-items: center;
+
+}
+
+ 
+
+body nav ul{
+
+    display: flex;
+
+    gap: 10%;
+
+}
+
+ 
+
+body nav ul a {
+
+    text-decoration: none;
+
+    color: var(--sencond-color)
+
+}
+
+ 
+
+body nav ul a :hover {
+
+    color: var(--primary-color);
+
+}
+
+ 
+
+ 
+
+.informaçãoes h2
+
+.habilidades h2
+
+.experiencia h2
+
+.projeto h2{
+
+    text-align: center;
+
+}
+
+ 
+
+.informaçãoes p strong {
+
+    color: var(--sencond-color);
+
+}
+
+ 
+
+body footer{
+
+    text-align: center;
+
+    background-color: var(--primary-color);
+
+}
+
+ 
+
+body footer a {
+
+    text-decoration: none;
+
+    color: var(--sencond-color);
+
+}
+
+ 
+
+body footer a :hover {
+
+    color: var(--primary-color);
+
+}
+
+ .first-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: solid 3px var(--tertiary-color);
+    object-fit: fill;
+ }
+
+nav {
+    background-color: var(--tertiary-color);
+    padding: 20px 0;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+nav ul a:hover {
+    color: var(--secondary-color);
+}
+
+nav ul a:active {
+    color: var(--primary-color);
+}
+
+main {
+    margin: 20px 0;
+    padding: 10px 0; 
+}
+
+main section {
+    margin: 40px 0;
+}
+
+main section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+main section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--tertiary-color)
+}
+
+main section ul {
+    padding-left: 15px;
+}
+
+section p strong {
+    color: var(--tertiary-color);
+}
+
+main hr {
+    border: none;
+    height: 2px;
+    background-color: var(--tertiary-color);
+}
+
+footer {
+    text-align: center;
+    background-image: linear-gradient(
+        to top,
+        var(--tertiary-color),
+        var(--primary-color)
+    );
+    color: var(--text-color);
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+footer a:hover {
+    color: var(primary-color);
+}
+
+footer a:active {
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    header img {
+        width: 140px;
+        height: 140px;
+    }
+
+    main{
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 375px){
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    header img {
+        width: 100px;
+        height: 100px;
+    }
+
+    main{
+        margin: 0 5px;
+    }
+}
+
