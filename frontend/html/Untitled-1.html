@@ -1,0 +1,214 @@
+crie uma página chamada formulario para cadastrar a noticia seguindo a estrutura semantica do modelo HTML abaixo, com variaveis e estilização conforme modelo do css, tambem crie uma função js que vai inserir a noticia, conforme modelo js. Segue também o modelo de servidor bacnkend server.js para mostrar a rota disponivel de POST ja funcionando no postman 
+
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../ico/icon_news.png">
+    <link rel="stylesheet" href="../css/noticias.css">
+    <script src="..//js/noticias.js"></script>
+    <title>Noticias</title>
+</head>
+<body class="claro" onload="exibir_noticias()">
+    <header>
+        <button onclick="alterar_tema()">Tema</button>
+        <h1>Notícias Web</h1>
+        <img src="../img/images.jpg" alt="webnews">
+    </header>
+    <nav></nav>
+    <main>
+        <section class="noticias" id="noticias"></section>
+
+        <div class="lightbox" id="lightbox" onclick="fechar_lightbox()"> 
+            <span class="fechar">&times;</span>
+            <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
+
+js 
+
+function alterar_tema() {
+    var body = document.body;
+
+    if (body.classList.contains("escuro")) {
+        body.classList.remove("escuro");
+        body.classList.add("claro");
+    }
+    else {
+        body.classList.remove("claro");
+        body.classList.add("escuro");
+    }
+}
+
+function abrir_lightbox(element){
+    var lightbox = document.getElementById("lightbox");
+    var lightbox_img = document.getElementById("lightbox-img");
+
+    lightbox_img.src = element.src;
+    lightbox.style.display ="flex";
+}
+
+function fechar_lightbox(){
+    document.getElementById("lightbox").style.display = "none";
+}
+
+async function exibir_noticias() {
+    const section = document.getElementById("noticias");
+    section.innerHTML = "<h2>Aguarde, carregando documento...</h2>"
+
+    const resposta = await fetch('http://127.0.0.1:3000/noticias');
+    var noticias = await resposta.json();
+    console.log(noticias);
+
+    var html = "";
+    noticias.forEach(noticia => {
+        html += `
+        <article class="noticia">
+                <img src="${noticia.caminhoImagem}" onclick="abrir_lightbox(this)">
+                <h2>${noticia.titulo}</h2>
+                <p>${noticia.conteudo}</p>
+                <a href="${noticia.link}">leia mais...</a>
+            </article>
+        `;
+    });
+    section.innerHTML = html;
+ 
+}
+
+css
+
+:root {
+    --primary-color: #D32B49;
+    --secondary-color: #890027;
+    --text-color: #710348;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.escuro {
+    --primary-color: #962814;
+    --secondary-color: #560002;
+    --text-color: #3E0C17;
+
+}
+
+header {
+    margin: 15px 10px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 10px;
+
+    display: flex;
+    gap: 10px;
+    align-items: center; /*Alinhamento Vertical*/
+    justify-content: center; /*Alinhamento Horizontal*/
+    background-color: var(--primary-color);
+}
+
+header button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+
+    padding: 1vw;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    background-color: var(var(--text-color));
+
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+header button:hover {
+    padding: 1.5vw;
+    border: 2px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+    
+    color: var(--primary-color);
+}
+
+header button:active {
+    border: 2px solid var(--text-color);
+    background-color: var(var(--primary-color));
+    color: var(--text-color);
+
+}
+
+header img {
+    width: 20vw;
+}
+
+header h1 {
+    font-size: 8vw;
+}
+
+.noticias {
+    margin: 15px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.noticia {
+    width: 300px;
+    padding: 15px;
+    border: 3px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    
+} 
+
+.noticia h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.noticia h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000dd;
+    align-items: center;
+    justify-content: center;
+}
+
+.light-img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.fechar {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 30px;
+    color: va(--primary-color);
+    cursor: pointer;
+}
