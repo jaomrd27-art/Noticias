@@ -8,14 +8,14 @@ CREATE TABLE noticias (
     id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(250) NOT NULL,
     conteudo TEXT NOT NULL,
-    caminhoImagem VARCHAR(250),
+    caminho_imagem VARCHAR(250),
     link VARCHAR(250)
 );
 
 INSERT INTO noticias (
     titulo,
     conteudo,
-    caminhoImagem,
+    caminho_imagem,
     link
 
 ) VALUES (
