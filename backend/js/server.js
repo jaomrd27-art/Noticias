@@ -31,7 +31,7 @@ app.post('/noticias', async (req, res) => {
         INSERT INTO noticias (
             titulo, 
             conteudo,
-            caminhoImagem,
+            caminho_imagem,
             link
         ) VALUES (
             ?,

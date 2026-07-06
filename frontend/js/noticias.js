@@ -27,7 +27,7 @@ async function exibir_noticias() {
     const section = document.getElementById("noticias");
     section.innerHTML = "<h2>Aguarde, carregando documento...</h2>"
 
-    const resposta = await fetch('http://127.0.0.1:3000/noticias');
+    const resposta = await fetch('https://noticias-backend-joao-arthur.up.railway.app/noticias');
     var noticias = await resposta.json();
     console.log(noticias);
 
@@ -35,7 +35,7 @@ async function exibir_noticias() {
     noticias.forEach(noticia => {
         html += `
         <article class="noticia">
-                <img src="${noticia.caminhoImagem}" onclick="abrir_lightbox(this)">
+                <img src="${noticia.caminho_imagem}" onclick="abrir_lightbox(this)">
                 <h2>${noticia.titulo}</h2>
                 <p>${noticia.conteudo}</p>
                 <a href="${noticia.link}">leia mais...</a>

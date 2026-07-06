@@ -13,7 +13,7 @@ function alterar_tema() {
 async function inserir_noticia() {
     var titulo        = document.getElementById("titulo").value.trim();
     var conteudo      = document.getElementById("conteudo").value.trim();
-    var caminhoImagem = document.getElementById("caminhoImagem").value.trim();
+    var caminho_imagem = document.getElementById("caminho_imagem").value.trim();
     var link          = document.getElementById("link").value.trim();
     var mensagem      = document.getElementById("mensagem");
 
@@ -27,7 +27,7 @@ async function inserir_noticia() {
     var novaNoticia = {
         titulo: titulo,
         conteudo: conteudo,
-        caminhoImagem: caminhoImagem,
+        caminho_imagem: caminho_imagem,
         link: link
     };
 
@@ -35,7 +35,7 @@ async function inserir_noticia() {
         mensagem.textContent = "Enviando...";
         mensagem.className = "";
 
-        const resposta = await fetch("http://127.0.0.1:3000/noticias", {
+        const resposta = await fetch("https://noticias-backend-joao-arthur.up.railway.app/noticias", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
