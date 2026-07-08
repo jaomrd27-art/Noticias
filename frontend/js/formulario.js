@@ -56,6 +56,6 @@ async function inserir_noticia() {
     } catch (e) {
         mensagem.textContent = "❌ Não foi possível conectar ao servidor.";
         mensagem.className = "erro";
-        console.error(e);
+        console.log(e);
     }
 }

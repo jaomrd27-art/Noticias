@@ -21,8 +21,8 @@ app.get('/noticias', async (req, res) => {
         LIMIT 10    
    `;
 
-   let resultado = await executarQuery(query);
-   res.send(resultado[0]);
+    let resultado = await executarQuery(query);
+    res.send(resultado[0]);
 });
 
 app.post('/noticias', async (req, res) => {
@@ -43,7 +43,7 @@ app.post('/noticias', async (req, res) => {
     var noticia = [
         req.body.titulo,
         req.body.conteudo,
-        req.body.imagem,
+        req.body.caminho_imagem,
         req.body.link
     ];
 
@@ -54,7 +54,7 @@ app.post('/noticias', async (req, res) => {
             insertId: resultado[0].insertid
         });
     }
-    catch {
+    catch (erro) {
         console.log(`Erro ao Executar Query: ${erro}`);
     }
     finally {
